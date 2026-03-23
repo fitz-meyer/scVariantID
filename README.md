@@ -1,6 +1,7 @@
-These scripts take cellranger bam output 'possorted_genome_bam.bam', filter viral reads into a new bam file, and sort viral reads by cell barcode to bin by cell population (cell barcode and cell population information is provided in meta data). 
-Output is a directory named 'sampleID' with bam files named cellpopname.bam containing WNV reads that originated from each cell type/population. 
+These scripts take cellranger bam output 'possorted_genome_bam.bam', filter viral reads into a new bam file, and sort viral reads by cell barcode to bin by cell population (cell barcode and cell population information is provided in meta data).
+Output is a directory named 'sampleID' with bam files named cellpopname.bam containing WNV reads that originated from each cell type/population.  
 If multiple bam files with different 'sampleID's in filebase are provided, multiple directories will be made, each named 'sampleID'. 
+cellpopname.bam files can be used to identify viral variants within specific cell populations (LoFreq), depending on coverage.
 
 samtools v1.23
 sinto v0.10.1
@@ -24,3 +25,5 @@ create sc_meta.csv file by extracting meta data from merged, normalized, seurat 
 Sort viral reads by cell barcode:
 
 1. ```$ ./scVariantID.sh *.bam```
+
+Coverage in cellpopname.bam files can be checked by running ```$ samtools depth cellpopname.bam > output.depth``` and visualizing resulting depth file in scVariantID_coverage_plots.R
