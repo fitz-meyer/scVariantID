@@ -7,15 +7,15 @@ sinto v0.10.1
 
 Prepare cellranger output bams for viral read extraction:
 
-1. rename cellranger output 'possorted_genome_bam.bam' to sampleID_possorted_genome_bam.bam where 'sampleID' exactly matches the sample ID in sc_meta: $ mv possorted_genome_bam.bam wnvMg3_possorted_genome_bam.bam
+1. rename cellranger output 'possorted_genome_bam.bam' to sampleID_possorted_genome_bam.bam where 'sampleID' exactly matches the sample ID in sc_meta: ```$ mv possorted_genome_bam.bam wnvMg3_possorted_genome_bam.bam```
 2. optionally move renamed bam files to working directory with viralReadSubset_V2.sh OR copy viralReadSubset_V2.sh into the directory containing your input bam file
-3. filter for and retain viral reads: $ ./viralReadSubset_V2.sh *.bam
+3. filter for and retain viral reads: ```$ ./viralReadSubset_V2.sh *.bam```
 5. sort and index filtered bam files with samtools
 6. move sorted bam files and bai files to new working directory containing scVariantID_V2.sh
 
 create sc_meta.csv file by extracting meta data from merged, normalized, seurat object like so:
 
-1. $ meta <- merged.srt@meta.data
+1. ```> meta <- merged.srt@meta.data```
 2. subset meta data by infection condition (only infected samples will have virus reads)
 3. select sample ID, cell barcode, and cell type columns 
 4. remove extraneous sample ID appended to start of cell barcode: sample-XXXXXXXXXX-1 -> XXXXXXXXXX-1
@@ -23,4 +23,4 @@ create sc_meta.csv file by extracting meta data from merged, normalized, seurat 
 
 Sort viral reads by cell barcode:
 
-1. $ ./scVariantID.sh *.bam
+1. ```$ ./scVariantID.sh *.bam```
