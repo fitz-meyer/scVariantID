@@ -3,7 +3,7 @@ Output is a directory named 'sampleID' with bam files named cellpopname.bam cont
 If multiple bam files with different 'sampleID's in filebase are provided, multiple directories will be made, each named 'sampleID'. 
 cellpopname.bam files can be used to identify viral variants within specific cell populations (LoFreq), depending on coverage.
 
-samtools v1.23,
+samtools v1.23 <br>
 sinto v0.10.1
 
 Prepare cellranger output bams for viral read extraction:
